@@ -110,3 +110,49 @@ defineSupportCode(({Given, When, Then}) => {
   });
 
 });
+
+defineSupportCode(({Given, When, Then}) => {
+  Given('I am again logged into Mantis', () => {
+      browser.url('/mantis/');
+      browser.waitForVisible('input[name="username"]', 5000);
+      browser.element('input[name="username"]').click();
+      browser.element('input[name="username"]').setValue('rcforero');
+      
+      browser.waitForVisible('input[value="Login"]', 5000);
+      browser.element('input[value="Login"]').click();
+      
+      browser.waitForVisible('input[name="password"]', 5000);
+      browser.element('input[name="password"]').click();
+      browser.element('input[name="password"]').setValue('Qwerty123');
+      
+      browser.waitForVisible('input[value="Login"]', 1000);
+      browser.element('input[value="Login"]').click();
+  });
+
+  When('I go to Report Issues menu', () => {
+    browser.pause(2000);
+    browser.element(".sidebar.sidebar-fixed.responsive.compact").$$('li')[2].$('a').click();
+  });
+
+  When(/^I fill with (.*) and (.*) and (.*)$/, (assignedTo, summary, description) => {
+    browser.pause(5000);
+    var selectHandler = browser.element('select[name="handler_id"]');
+    selectHandler.selectByValue(assignedTo);
+
+    browser.element('input[name="summary"]').setValue(summary);
+    browser.element('textarea[name="description"]').setValue(description);
+    browser.element('textarea[name="additional_info"]').setValue('Info');
+  });
+
+  When('I Submit Issue', () => {
+    browser.element('input[value="Submit Issue"]').click();
+  });
+
+  Then('Then I expect to see {string}', (description) =>{
+    browser.waitForVisible('table[id="buglist"]', 4000);
+    var issuesTab = $("#buglist");
+    
+    console.log(issuesTab.$('tbody').$$('tr')[0].$$('td')[10].getText());
+    expect(issuesTab.$('tbody').$$('tr')[0].$$('td')[10].getText()).toBe(description);
+  });
+});
