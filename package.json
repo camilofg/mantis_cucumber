@@ -1,0 +1,20 @@
+{
+  "name": "mantis_cucumber",
+  "version": "1.0.0",
+  "description": "cucumber made to mantis",
+  "main": "wdio.conf.js",
+  "scripts": {
+    "test": "node node_modules/webdriverio/bin/wdio wdio.conf.js"
+  },
+  "author": "Camilo Forero",
+  "license": "ISC",	
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "wdio-cucumber-framework": "^1.0.2",
+    "wdio-selenium-standalone-service": "0.0.9",
+    "wdio-spec-reporter": "^0.1.2"
+  },
+  "dependencies": {
+     "webdriverio": "^4.8.0"
+  }
+}
