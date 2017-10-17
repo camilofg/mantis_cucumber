@@ -1,7 +1,7 @@
 Feature: Create new project in Mantis Bug Tracker
     As an authenticated user I want to create a new project
 
-Scenario Outline: Usser logged create a new project not succesfully
+Scenario Outline: User logged create a new project not succesfully
 
 Given I am logged into Mantis  
     And I go to Manage menu
