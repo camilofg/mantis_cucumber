@@ -16,7 +16,7 @@ Given I am logged into Mantis
 
 
 
-Scenario Outline: Usser logged create a new project succesfully
+Scenario Outline: User logged create a new project succesfully
 
 Given I am logged into Mantis  
     And I go to Manage menu
